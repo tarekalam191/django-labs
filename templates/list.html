@@ -1,0 +1,34 @@
+{% extends 'parent.html' %}
+<!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'day1/css/style.css' %}"> -->
+{% block title %}
+Book - List 
+{% endblock %}
+
+{% block content %}
+Book - List - content
+<table border="1" width="100%">
+    <tr>
+        <td>ID</td>
+        <td>TITLE </td>
+        <td>VERSION</td>
+        <td>Actions</td>
+    </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.version}}</td>
+            <td>
+                <!-- <a href="../view.html/{{ book.id }}">Details</a> -->
+                <a href="{% url 'book_view' book.id %}">Details</a>
+                <a href="">Update</a>
+                <a href="{% url 'book_delete' book.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+        {% endblock  %}
+    
+    
+    
